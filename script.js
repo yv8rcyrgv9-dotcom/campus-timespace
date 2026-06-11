@@ -12,7 +12,7 @@ function sendAuthCode() {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.ac\.kr$/;
     
     if(!emailRegex.test(email)) {
-        alert("대학 도메인(.ac.kr) 이메일을 입력해주세요!");
+        alert("고려대학교 KUPID(.ac.kr) 이메일을 입력해주세요!");
         return;
     }
     
@@ -23,8 +23,8 @@ function sendAuthCode() {
 function verifyCode() {
     const code = document.getElementById('codeInput').value;
     if(code === "123456") {
-        alert("학교 인증 및 회원가입이 완료되었습니다!");
-        showTab('timetable'); // 성공 시 시간표 탭으로 바로 이동
+        alert("고대생 인증 및 회원가입이 완료되었습니다!");
+        showTab('timetable');
     } else {
         alert("인증코드가 일치하지 않습니다.");
     }
@@ -35,27 +35,39 @@ function analyzeTimetable() {
     document.getElementById('timetableResult').classList.remove('hidden');
 }
 
-// 3. 장소 추천 가상 로직
+// 3. 고려대 맞춤 장소 추천 가상 로직
 function recommendPlace() {
     const theme = document.getElementById('theme').value;
+    const loc = document.getElementById('location').value;
     const placeList = document.getElementById('placeList');
     
     let resultHTML = "";
     if(theme === "카공") {
-        resultHTML = `
-            <div class="card">
-                <div>
-                    <h3>☕ 교내 도서관 노트북석</h3>
-                    <p>도보 5분 | 평균 체류시간: 2시간 | 콘센트 많음</p>
-                </div>
-                <button disabled>도착</button>
-            </div>`;
+        if(loc === "인문캠") {
+            resultHTML = `
+                <div class="card">
+                    <div>
+                        <h3>📚 백주년기념관(백기) 라운지 노트북석</h3>
+                        <p>도보 4분 | 콘센트 많음 | 에어컨 빵빵함</p>
+                    </div>
+                    <button disabled>도착</button>
+                </div>`;
+        } else {
+            resultHTML = `
+                <div class="card">
+                    <div>
+                        <h3>💻 하나스퀘어(하스) 열람실</h3>
+                        <p>도보 3분 | 이공캠 카공의 성지</p>
+                    </div>
+                    <button disabled>도착</button>
+                </div>`;
+        }
     } else if (theme === "휴식") {
         resultHTML = `
             <div class="card">
                 <div>
-                    <h3>🛋️ 학생회관 수면실 / 휴게실</h3>
-                    <p>도보 3분 | 빈 자리 3개 남음 | 조용함</p>
+                    <h3>🛋️ 중앙광장(중광) 지하 수면실 / 다람쥐길 벤치</h3>
+                    <p>도보 5분 | 날씨 좋으면 다람쥐길 벤치 추천</p>
                 </div>
                 <button disabled>도착</button>
             </div>`;
@@ -63,8 +75,8 @@ function recommendPlace() {
         resultHTML = `
             <div class="card">
                 <div>
-                    <h3>🍜 정문 앞 가성비 덮밥집</h3>
-                    <p>도보 8분 | 혼밥 난이도: 하 | 대기열 없음</p>
+                    <h3>🍜 참살이길 가성비 밥집</h3>
+                    <p>도보 7분 | 동기들과 밥약하기 좋은 곳</p>
                 </div>
                 <button disabled>도착</button>
             </div>`;
@@ -88,7 +100,7 @@ function createRoom() {
             <h3>${title}</h3>
             <p>현재 인원: 1/4 | 방장: 나</p>
         </div>
-        <button disabled style="background-color: #ccc;">내 모임</button>
+        <button disabled style="background-color: #8b0029; opacity: 0.7;">내 모임</button>
     `;
     roomList.prepend(newRoom);
     document.getElementById('roomTitle').value = "";
