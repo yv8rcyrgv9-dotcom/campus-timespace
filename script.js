@@ -1,4 +1,4 @@
-// 탭 이동 로직 (오류 완벽 수정 완료)
+// 탭 이동 로직
 function showTab(tabId) {
     document.querySelectorAll('.tab-content').forEach(tab => {
         tab.classList.remove('active');
