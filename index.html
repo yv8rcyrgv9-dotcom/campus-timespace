@@ -19,10 +19,10 @@
 
     <main>
         <section id="auth" class="tab-content active">
-            <h2>🔐 대학생 인증</h2>
-            <p>학교 이메일을 입력해 우주 공강 탈출을 시작하세요.</p>
+            <h2>🔐 고대생 인증</h2>
+            <p>포털 KUPID 이메일을 입력해 우주 공강 탈출을 시작하세요.</p>
             <div class="input-group">
-                <input type="email" id="emailInput" placeholder="학교 이메일 (예: user@korea.ac.kr)">
+                <input type="email" id="emailInput" placeholder="KUPID 이메일 (예: user@korea.ac.kr)">
                 <button onclick="sendAuthCode()">인증 메일 발송</button>
             </div>
             <div id="codeArea" class="hidden">
@@ -34,30 +34,30 @@
 
         <section id="timetable" class="tab-content">
             <h2>📅 나의 공강 시간표</h2>
-            <p>버튼을 눌러 가상 시간표 데이터를 불러오면, 자동으로 공강이 분석됩니다.</p>
+            <p>버튼을 눌러 시간표 데이터를 불러오면, 자동으로 캠퍼스 내 동선과 공강이 분석됩니다.</p>
             <button onclick="analyzeTimetable()" class="action-btn">내 시간표 분석하기</button>
             <div id="timetableResult" class="result-box hidden">
-                <p><strong>분석 결과:</strong> 화요일 3, 4교시(11:00~13:00) 2시간 공강이 발견되었습니다!</p>
-                <p>추천 액션: 점심 밥약 또는 도서관 카공</p>
+                <p><strong>분석 결과:</strong> 서관(문과대학)에서 우당교양관 이동 전, 화요일 3, 4교시(11:00~13:00) 2시간 공강!</p>
+                <p>추천 액션: 참살이길 점심 밥약 또는 백기 라운지 카공</p>
             </div>
         </section>
 
         <section id="place" class="tab-content">
-            <h2>📍 맞춤 장소 추천</h2>
+            <h2>📍 안암 맞춤 장소 추천</h2>
             <div class="filter-group">
                 <select id="location">
-                    <option value="인문캠">인문캠퍼스 근처</option>
-                    <option value="자연캠">자연캠퍼스 근처</option>
+                    <option value="인문캠">인문캠 (문과대/정경대)</option>
+                    <option value="자연캠">이공캠 (이과대/공대)</option>
                 </select>
                 <select id="theme">
-                    <option value="카공">카공 (노트북석)</option>
+                    <option value="카공">카공 (콘센트석)</option>
                     <option value="휴식">휴식 (수면실/소파)</option>
                     <option value="맛집">맛집/카페</option>
                 </select>
                 <button onclick="recommendPlace()">추천받기</button>
             </div>
             <div id="placeList" class="card-list">
-                <p style="color: #666;">조건을 선택하고 추천받기 버튼을 눌러주세요.</p>
+                <p style="color: #666;">위치와 목적을 선택하고 추천받기 버튼을 눌러주세요.</p>
             </div>
         </section>
 
@@ -70,8 +70,15 @@
             <div id="roomList" class="card-list">
                 <div class="card">
                     <div>
-                        <h3>[카공] 중도 노트북석 같이 가실 분</h3>
-                        <p>현재 인원: 1/2 | 장소: 중앙도서관</p>
+                        <h3>[합주] 국카스텐 '아지랑이' 잼하실 보컬/클라리넷 구함</h3>
+                        <p>현재 인원: 3/5 | 장소: 학생회관 밴드 동아리방</p>
+                    </div>
+                    <button onclick="joinRoom(this)">참여하기</button>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3>[카공] 백기에서 퇴계/고봉 사단칠정론 에세이 쓰실 분</h3>
+                        <p>현재 인원: 1/4 | 장소: 백주년기념관 열람실</p>
                     </div>
                     <button onclick="joinRoom(this)">참여하기</button>
                 </div>
