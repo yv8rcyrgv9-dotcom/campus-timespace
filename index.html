@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캠퍼스 타임스페이스</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">⏳ 캠퍼스 타임스페이스</div>
+        <nav>
+            <button onclick="showTab('auth')">인증/가입</button>
+            <button onclick="showTab('timetable')">공강 분석</button>
+            <button onclick="showTab('place')">장소 추천</button>
+            <button onclick="showTab('match')">밥약/모임</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 1. 회원가입 및 프로필 설정 -->
+        <section id="auth" class="tab-content active">
+            <h2>🔐 대학생 인증</h2>
+            <p>학교 이메일을 입력해 우주 공강 탈출을 시작하세요.</p>
+            <div class="input-group">
+                <input type="email" id="emailInput" placeholder="학교 이메일 (예: user@korea.ac.kr)">
+                <button onclick="sendAuthCode()">인증 메일 발송</button>
+            </div>
+            <div id="codeArea" class="hidden">
+                <p class="timer">남은 시간: <span id="time">05:00</span></p>
+                <input type="text" id="codeInput" placeholder="6자리 인증코드 입력 (가짜번호 123456 입력)">
+                <button onclick="verifyCode()">인증 완료</button>
+            </div>
+        </section>
+
+        <!-- 2. 공강 시간표 등록 및 분석 -->
+        <section id="timetable" class="tab-content hidden">
+            <h2>📅 나의 공강 시간표</h2>
+            <p>버튼을 눌러 가상 시간표 데이터를 불러오면, 자동으로 공강이 분석됩니다.</p>
+            <button onclick="analyzeTimetable()" class="action-btn">내 시간표 분석하기</button>
+            <div id="timetableResult" class="result-box hidden">
+                <p><strong>분석 결과:</strong> 화요일 3, 4교시(11:00~13:00) 2시간 공강이 발견되었습니다!</p>
+                <p>추천 액션: 점심 밥약 또는 도서관 카공</p>
+            </div>
+        </section>
+
+        <!-- 3. 목적별 맞춤 장소 추천 -->
+        <section id="place" class="tab-content hidden">
+            <h2>📍 맞춤 장소 추천</h2>
+            <div class="filter-group">
+                <select id="location">
+                    <option value="인문캠">인문캠퍼스 근처</option>
+                    <option value="자연캠">자연캠퍼스 근처</option>
+                </select>
+                <select id="theme">
+                    <option value="카공">카공 (노트북석)</option>
+                    <option value="휴식">휴식 (수면실/소파)</option>
+                    <option value="맛집">맛집/카페</option>
+                </select>
+                <button onclick="recommendPlace()">추천받기</button>
+            </div>
+            <div id="placeList" class="card-list"></div>
+        </section>
+
+        <!-- 4. 즉석 밥약 및 번개 모임 매칭 -->
+        <section id="match" class="tab-content hidden">
+            <h2>⚡ 즉석 밥약 & 번개 모임</h2>
+            <div class="room-create">
+                <input type="text" id="roomTitle" placeholder="예: 화요일 3교시 학식팟 구함 (2/4)">
+                <button onclick="createRoom()">방 만들기</button>
+            </div>
+            <div id="roomList" class="card-list">
+                <!-- 가상 모임방 데이터 -->
+                <div class="card">
+                    <h3>[카공] 중도 노트북석 같이 가실 분</h3>
+                    <p>현재 인원: 1/2 | 장소: 중앙도서관</p>
+                    <button onclick="joinRoom(this)">참여하기</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
