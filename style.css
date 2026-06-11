@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Pretendard', -apple-system, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+header {
+    background-color: #8b0029; /* 크림슨 컬러 톤 */
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav button {
+    background: none;
+    border: none;
+    color: white;
+    margin-left: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+nav button:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.3s;
+}
+
+h2 {
+    margin-bottom: 1rem;
+    color: #8b0029;
+}
+
+input, select {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    width: 60%;
+}
+
+button {
+    padding: 0.8rem 1.2rem;
+    background-color: #8b0029;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #6a001f;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.input-group, .filter-group, .room-create {
+    margin-bottom: 1.5rem;
+    display: flex;
+}
+
+.timer {
+    color: #e03131;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.result-box {
+    background-color: #ffe8ee;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.card {
+    border: 1px solid #eee;
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
